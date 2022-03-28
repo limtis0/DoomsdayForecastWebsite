@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+:root {
+    --light: #eeeeee;
+    --dark: #171717;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+}
+
+body {
+    background-image: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url(hell.png);
+}
+
+/* NAVBAR */
+.container {
+    max-width: 1280;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav {
+    background-color: var(--dark);
+    padding: 1rem 2rem;
+    border-bottom: 3px solid var(--light);
+}
+
+nav * {
+    color: var(--light);
+    text-decoration: none;
+}
+
+.menu a {
+    margin: 0 1rem;
+    font-weight: 600;
+}
+
+/* CARD */
+
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 4rem);
+    margin: 0;
+}
+
+.card * {
+    text-align: center;
+    color: var(--light);
+}
+
+
+.weather {
+    padding: 2rem;
+    margin: 1rem;
+
+    width: 100%;
+    max-width: 26rem;
+    border-radius: 2rem;
+
+    background: #171717aa;
+}
+
+.weather h2 {
+    margin-bottom: 0.5rem;
+}
+
+.icon {
+    width: 8rem;
+    height: 8rem;
+}
+
+.filter-light {
+    filter: invert(100%) sepia(21%) saturate(90%) hue-rotate(303deg) brightness(113%) contrast(87%)
+}
+
+#calendar {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 2rem;
+    margin-bottom: 3rem;
+}
+
+#calendar button {
+    background-color: #272727;
+    color: var(--light);
+    border: none;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+#calendar button:hover
+{
+    background-color: #383838;
+    cursor: pointer;
+}
+
+#calendar button:active
+{
+    background-color: #646464;
+}
