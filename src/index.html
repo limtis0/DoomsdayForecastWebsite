@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Doomsday Forecast</title>
     <link rel="stylesheet" href="main.css">
+    <script src="main.js" defer></script>
 </head>
 <body>
     <nav>
@@ -24,11 +25,11 @@
         <div class="weather">
             <h2 id="monthframe"></h2>
             <div id="calendar">
-                <button id="button-day-0"></button>
-                <button id="button-day-1"></button>
-                <button id="button-day-2"></button>
-                <button id="button-day-3"></button>
-                <button id="button-day-4"></button>
+                <button id="button-0" class="button-unselected" onclick="selectButton(this.id)"></button>
+                <button id="button-1" class="button-unselected" onclick="selectButton(this.id)"></button>
+                <button id="button-2" class="button-unselected" onclick="selectButton(this.id)"></button>
+                <button id="button-3" class="button-unselected" onclick="selectButton(this.id)"></button>
+                <button id="button-4" class="button-unselected" onclick="selectButton(this.id)"></button>
             </div>
 
             <h1 id="event-name"></h1>
@@ -37,6 +38,5 @@
             <div id="motd"></div>
         </div>
     </div>
-    <script src="main.js"></script>
 </body>
 </html>
