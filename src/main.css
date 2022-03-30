@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 :root {
-    --light: #eeeeee;
+    --light: #646464;
+    --lighter: #eeeeee;
     --dark: #272727;
     --darker: #171717;
 }
@@ -30,11 +31,11 @@ body {
 nav {
     background-color: var(--darker);
     padding: 1rem 2rem;
-    border-bottom: 3px solid var(--light);
+    border-bottom: 3px solid var(--lighter);
 }
 
 nav * {
-    color: var(--light);
+    color: var(--lighter);
     text-decoration: none;
 }
 
@@ -54,7 +55,7 @@ nav * {
 
 .card * {
     text-align: center;
-    color: var(--light);
+    color: var(--lighter);
 }
 
 
@@ -95,21 +96,24 @@ nav * {
 
 #calendar button {
     white-space: pre-line;
-    background-color: var(--dark);
-    color: var(--light);
+    color: var(--lighter);
     border: none;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
 }
 
-#calendar button:hover
+.button-unselected {
+    background-color: var(--dark);
+}
+
+.button-unselected:hover
 {
     background-color: #383838;
     cursor: pointer;
 }
 
-#calendar button:active
-{
-    background-color: #646464;
+.button-selected {
+    background-color: var(--light);
+    pointer-events: none;
 }

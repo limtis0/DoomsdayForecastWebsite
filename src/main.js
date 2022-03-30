@@ -28,6 +28,27 @@ function fillButtons(currentDate)
     }
 }
 
+function selectButton(buttonId)
+{
+    // Deselects all buttons and selects chosen one
+    var buttons = document.getElementById("calendar").getElementsByTagName("button");
+    var currentButton;
+    for (var i = 0; i < buttons.length; i++)
+    {
+        currentButton = buttons[i];
+        if(currentButton.id == buttonId)
+        {
+            currentButton.classList.remove('button-unselected');
+            currentButton.classList.add('button-selected');
+        }
+        else
+        {
+            currentButton.classList.remove('button-selected');
+            currentButton.classList.add('button-unselected');
+        }
+    }
+}
+
 class CalendarItem
 {
     constructor(eventName, temperature, iconURL, motd, backgroundURL)
@@ -49,12 +70,11 @@ function showEvent(day)
     document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${day.backgroundURL})`;
 }
 
+
+// MAIN
 var date = new Date();
 setMonthFrame(date);
-
-// Filling buttons with current dates
 fillButtons(date);
 
 let day = new CalendarItem("Sun explosion", 999999, "./witch.svg", "Turn the AC on", "hell.png");
-
 showEvent(day);
