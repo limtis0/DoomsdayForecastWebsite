@@ -86,7 +86,11 @@ nav * {
     display: flex;
     justify-content: space-between;
     margin: 0 2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+#monthframe {
+    margin-bottom: 0.5rem;
 }
 
 #calendar button {
