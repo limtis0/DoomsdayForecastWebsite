@@ -2,7 +2,8 @@
 
 :root {
     --light: #eeeeee;
-    --dark: #171717;
+    --dark: #272727;
+    --darker: #171717;
 }
 
 * {
@@ -13,7 +14,7 @@
 }
 
 body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(hell.png);
+    background-color: var(--dark);
 }
 
 /* NAVBAR */
@@ -27,7 +28,7 @@ body {
 }
 
 nav {
-    background-color: var(--dark);
+    background-color: var(--darker);
     padding: 1rem 2rem;
     border-bottom: 3px solid var(--light);
 }
@@ -48,8 +49,7 @@ nav * {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 4rem);
-    margin: 0;
+    height: calc(100vh - 4.5rem);
 }
 
 .card * {
@@ -73,9 +73,9 @@ nav * {
     margin-bottom: 0.5rem;
 }
 
-.icon {
-    width: 8rem;
-    height: 8rem;
+#event-icon {
+    width: 9rem;
+    height: 9rem;
 }
 
 .filter-light {
@@ -94,7 +94,8 @@ nav * {
 }
 
 #calendar button {
-    background-color: #272727;
+    white-space: pre-line;
+    background-color: var(--dark);
     color: var(--light);
     border: none;
     width: 3rem;
