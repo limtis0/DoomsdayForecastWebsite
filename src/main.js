@@ -75,6 +75,7 @@ function showEvent(day)
 var date = new Date();
 setMonthFrame(date);
 fillButtons(date);
+selectButton("calendar-button-1");
 
-let day = new CalendarItem("Sun explosion", 999999, "./witch.svg", "Turn the AC on", "hell.png");
+let day = new CalendarItem("Sun explosion", 999999, "icons/witch.svg", "Turn the AC on", "backgrounds/hell.png");
 showEvent(day);
