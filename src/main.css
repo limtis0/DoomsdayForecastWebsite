@@ -14,12 +14,27 @@
     font-family: "Nunito", sans-serif;
 }
 
-body {
-    background-color: var(--dark);
+/* BACKGROUND */
+#background-container img {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+
+    filter: brightness(50%);
+
+    -webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
+}
+
+#background-container img.transparent {
+    opacity: 0;
 }
 
 /* NAVBAR */
-.container {
+.nav-container {
     max-width: 1280;
     margin: 0 auto;
 
@@ -45,7 +60,6 @@ nav * {
 }
 
 /* CARD */
-
 .card {
     display: flex;
     justify-content: center;
@@ -57,7 +71,6 @@ nav * {
     text-align: center;
     color: var(--lighter);
 }
-
 
 .weather {
     padding: 2rem;
@@ -83,15 +96,16 @@ nav * {
     filter: invert(100%) sepia(21%) saturate(90%) hue-rotate(303deg) brightness(113%) contrast(87%)
 }
 
+#monthframe {
+    margin-bottom: 0.5rem;
+}
+
+/* BUTTONS */
 #calendar {
     display: flex;
     justify-content: space-between;
     margin: 0 2rem;
     margin-bottom: 2rem;
-}
-
-#monthframe {
-    margin-bottom: 0.5rem;
 }
 
 #calendar button {

@@ -5,10 +5,10 @@ function dateFormatButtons(date){ return `${months[date.getMonth()]}\n${date.get
 
 function setMonthFrame(currentDate)
 {
-    var yesterdayDate = new Date();
+    let yesterdayDate = new Date();
     yesterdayDate.setDate(currentDate.getDate() - 1);
 
-    var lastDate = new Date();
+    let lastDate = new Date();
     lastDate.setDate(currentDate.getDate() + 3); // Five days summary
 
     document.getElementById("monthframe").textContent = `${dateFormatMonthframe(yesterdayDate)} - ${dateFormatMonthframe(lastDate)}`;
@@ -16,12 +16,12 @@ function setMonthFrame(currentDate)
 
 function fillButtons(currentDate)
 {
-    var date = new Date();
+    let date = new Date();
     date.setDate(currentDate.getDate() - 1); // Fills from yesterday
 
-    var buttons = document.getElementById("calendar").getElementsByTagName("button");
+    let buttons = document.getElementById("calendar").getElementsByTagName("button");
 
-    for (var i = 0; i < buttons.length; i++)
+    for (let i = 0; i < buttons.length; i++)
     {
         buttons[i].textContent = dateFormatButtons(date);
         date.setDate(date.getDate() + 1);
@@ -31,9 +31,9 @@ function fillButtons(currentDate)
 function selectButton(buttonId)
 {
     // Deselects all buttons and selects chosen one
-    var buttons = document.getElementById("calendar").getElementsByTagName("button");
-    var currentButton;
-    for (var i = 0; i < buttons.length; i++)
+    let buttons = document.getElementById("calendar").getElementsByTagName("button");
+    let currentButton;
+    for (let i = 0; i < buttons.length; i++)
     {
         currentButton = buttons[i];
         if(currentButton.id == buttonId)
@@ -47,6 +47,7 @@ function selectButton(buttonId)
             currentButton.classList.add('button-unselected');
         }
     }
+    switchBackgrounds(); // TODO add picture change support
 }
 
 class CalendarItem
@@ -67,12 +68,19 @@ function showEvent(day)
     document.getElementById("temp").textContent = `${day.temperature}°C`;
     document.getElementById("event-icon").src = day.logoURL;
     document.getElementById("motd").textContent = day.motd;
-    document.body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${day.backgroundURL})`;
+}
+
+var background0 = false; // Bool to get current background
+function switchBackgrounds()//backgroundURL)
+{
+    // background0 ? document.getElementById("background-image-1").src = backgroundURL : document.getElementById("background-image-0").src = backgroundURL;
+    document.getElementById("background-image-1").classList.toggle("transparent");
+    console.log("toggled");
 }
 
 
 // MAIN
-var date = new Date();
+let date = new Date();
 setMonthFrame(date);
 fillButtons(date);
 selectButton("calendar-button-1");
