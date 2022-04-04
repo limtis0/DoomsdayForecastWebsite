@@ -14,6 +14,7 @@ const pool = require("./js/databases")
 app.use(express.json());
 app.use(cors(corsOptions));
 
+
 // ROUTES
 app.get("/api/current-date", (req, res) => {
    try {
@@ -70,6 +71,10 @@ app.get("/api/weekly-events", async (req, res) => {
     } catch (err) {
         console.error(err.message);
     }
+});
+
+app.listen(port, () => {
+    console.log("Server is listening on port", port);
 });
 
 
@@ -161,7 +166,3 @@ function dateInRange(currentDate, minDate, maxDate)
     maxDate.setHours(23, 59, 59, 999);
     return (currentDate >= minDate && currentDate <= maxDate);
 }
-
-app.listen(port, () => {
-    console.log("Server is listening on port", port);
-});
