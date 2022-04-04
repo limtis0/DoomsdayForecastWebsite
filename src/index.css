@@ -14,6 +14,10 @@
     font-family: "Nunito", sans-serif;
 }
 
+body {
+    background-color: var(--dark);
+}
+
 /* BACKGROUND */
 #background-container img {
     position: absolute;

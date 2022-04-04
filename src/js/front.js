@@ -47,7 +47,25 @@ function selectButton(buttonId)
             currentButton.classList.add('button-unselected');
         }
     }
-    switchBackgrounds(); // TODO add picture change support
+    showEvent(getCalendarItem(buttonId));
+    switchBackgrounds(getCalendarItem(buttonId).backgroundURL); // TODO add picture change support
+}
+
+function getCalendarItem(buttonId)
+{
+    switch(buttonId)
+    {
+        case "calendar-button-0":
+            return calendar[0];
+        case "calendar-button-1":
+            return calendar[1];
+        case "calendar-button-2":
+            return calendar[2];
+        case "calendar-button-3":
+            return calendar[3];
+        case "calendar-button-4":
+            return calendar[4];                                       
+    }
 }
 
 class CalendarItem
@@ -56,7 +74,7 @@ class CalendarItem
     {
         this.eventName = eventName;
         this.temperature = temperature;
-        this.logoURL = iconURL;
+        this.iconURL = iconURL;
         this.motd = motd;
         this.backgroundURL = backgroundURL;
     }
@@ -66,24 +84,51 @@ function showEvent(day)
 {
     document.getElementById("event-name").textContent = day.eventName;
     document.getElementById("temp").textContent = `${day.temperature}°C`;
-    document.getElementById("event-icon").src = day.logoURL;
+    document.getElementById("event-icon").src = day.iconURL;
     document.getElementById("motd").textContent = day.motd;
 }
 
 var background0 = false; // Bool to get current background
-function switchBackgrounds()//backgroundURL)
+function switchBackgrounds(backgroundURL)
 {
-    // background0 ? document.getElementById("background-image-1").src = backgroundURL : document.getElementById("background-image-0").src = backgroundURL;
+    background0 ? document.getElementById("background-image-1").src = backgroundURL : document.getElementById("background-image-0").src = backgroundURL;
+    background0 = background0 ? false : true;
     document.getElementById("background-image-1").classList.toggle("transparent");
-    console.log("toggled");
 }
 
+function preloadImage(url) { new Image().src = url; }
+
+async function fetchAsync (url)
+{
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+}
 
 // MAIN
-let date = new Date();
-setMonthFrame(date);
-fillButtons(date);
-selectButton("calendar-button-1");
+var currentDate;
+var calendar = [];
 
-let day = new CalendarItem("Sun explosion", 999999, "icons/witch.svg", "Turn the AC on", "backgrounds/hell.png");
-showEvent(day);
+async function main()
+{
+    // Builds page based on currentDate
+    let dateResponse = await fetchAsync("http://127.0.0.1:3000/api/current-date");
+    currentDate = new Date(Date.parse(dateResponse));
+    setMonthFrame(currentDate);
+    fillButtons(currentDate);
+
+    // Gets events for 5 days from DB
+    let calendarResponse = await fetchAsync("http://127.0.0.1:3000/api/weekly-events");
+    let curItem;
+    for (i = 0; i < 5; i++)
+    {
+        curItem = calendarResponse[i];
+        preloadImage(curItem.icon);
+        preloadImage(curItem.background);
+        calendar[i] = new CalendarItem(curItem.name, curItem.temp, curItem.icon, curItem.phrase, curItem.background);
+    }
+
+    selectButton("calendar-button-1");
+}
+
+main();
