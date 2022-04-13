@@ -155,8 +155,8 @@ function getCurrentDate()
 
 function namesToPaths(row) // Changes names of icon/background to absolute path
 {
-    row.icon = `/src/icons/${row.icon}.svg`;
-    row.background = `/src/backgrounds/${row.background}.png`;
+    row.icon = `/icons/${row.icon}.svg`;
+    row.background = `/backgrounds/${row.background}.png`;
     return row;
 }
 
