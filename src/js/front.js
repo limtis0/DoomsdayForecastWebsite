@@ -51,22 +51,7 @@ function selectButton(buttonId)
     switchBackgrounds(getCalendarItem(buttonId).backgroundURL); // TODO add picture change support
 }
 
-function getCalendarItem(buttonId)
-{
-    switch(buttonId)
-    {
-        case "calendar-button-0":
-            return calendar[0];
-        case "calendar-button-1":
-            return calendar[1];
-        case "calendar-button-2":
-            return calendar[2];
-        case "calendar-button-3":
-            return calendar[3];
-        case "calendar-button-4":
-            return calendar[4];                                       
-    }
-}
+function getCalendarItem(buttonId) { return(calendar[parseInt(buttonId.slice(-1))]); }
 
 class CalendarItem
 {
