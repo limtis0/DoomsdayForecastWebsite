@@ -1,6 +1,6 @@
 # DoomsdayForecastWebsite
 
-Weather forecast website with a twist. It shows only apocalypses.
+Weather forecast website with a twist.
 
 ![](src/preview.png)
 
